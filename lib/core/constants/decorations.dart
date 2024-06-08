@@ -21,11 +21,6 @@ BoxDecoration profileTopCardDecoration = const BoxDecoration(
       bottomLeft: Radius.circular(20),
       bottomRight: Radius.circular(20)
   ),
-  gradient: LinearGradient(
-    colors: [Color(0xFF8A2BE2), Color(0xff2f076a)],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  ),
 );
 
 BoxDecoration iconDecoration = BoxDecoration(
