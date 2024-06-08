@@ -11,6 +11,7 @@ class SizeInput extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String> onValueChanged;
   final String? Function(String?)? validator;
+  final int maxNumbers;
 
   const SizeInput({
     super.key,
@@ -22,6 +23,7 @@ class SizeInput extends StatelessWidget {
     required this.controller,
     required this.onValueChanged,
     this.validator,
+    required this.maxNumbers,
   });
 
   @override
@@ -43,8 +45,10 @@ class SizeInput extends StatelessWidget {
             onChanged: onValueChanged,
             keyboardType: textInputType,
             validator: validator,
+            maxLength: maxNumbers,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(
+                counterText: "",
                 prefixIcon: Container(
                   padding: const EdgeInsets.only(left: 10),
                   child: const Row(
@@ -63,7 +67,7 @@ class SizeInput extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (suffixText == true) Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
                       child: Text(
                         hintText,
                         style: TextStyle(
