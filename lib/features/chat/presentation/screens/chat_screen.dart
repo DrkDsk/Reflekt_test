@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reflekt_test/core/constants/color.dart';
 import 'package:reflekt_test/core/constants/strings.dart';
 import 'package:reflekt_test/core/constants/styles.dart';
+import 'package:reflekt_test/features/chat/presentation/widgets/ad_card.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/description_text.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/large_button.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/listview_items.dart';
@@ -70,6 +71,20 @@ class ChatScreen extends StatelessWidget {
                     height: 180,
                     child: ListViewItems()
                 ),
+                DescriptionText(
+                    title: quickStartText,
+                    style: smallTextStyle
+                ),
+                const SizedBox(height: 5),
+                DescriptionText(
+                    title: ideasText,
+                    style: tinyTextStyle
+                ),
+                const SizedBox(height: 15),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: AdCard(),
+                )
               ],
             ),
           ),
