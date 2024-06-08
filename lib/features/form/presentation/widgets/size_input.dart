@@ -10,6 +10,7 @@ class SizeInput extends StatelessWidget {
   final TextInputType textInputType;
   final TextEditingController controller;
   final ValueChanged<String> onValueChanged;
+  final String? Function(String?)? validator;
 
   const SizeInput({
     super.key,
@@ -19,7 +20,8 @@ class SizeInput extends StatelessWidget {
     this.suffixText,
     required this.textInputType,
     required this.controller,
-    required this.onValueChanged
+    required this.onValueChanged,
+    this.validator,
   });
 
   @override
@@ -36,47 +38,59 @@ class SizeInput extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: textColor,
-                ),
-                borderRadius: BorderRadius.circular(8)
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: TextField(
-                controller: controller,
-                onChanged: onValueChanged,
-                keyboardType: textInputType,
-                decoration: InputDecoration(
-                    suffixIcon: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (suffixText == true) Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            hintText,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: textColor.withOpacity(0.5),
-                              fontWeight: FontWeight.w400
-                            ),
-                          ),
+          TextFormField(
+            controller: controller,
+            onChanged: onValueChanged,
+            keyboardType: textInputType,
+            validator: validator,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+                prefixIcon: Container(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "-",
+                        style: TextStyle(
+                          color: textColor,
                         ),
-                        iconData,
-                      ],
-                    ),
-                    hintText: suffixText == true ? null : hintText,
-                    hintStyle: TextStyle(
-                      fontSize: 18,
-                      color: textColor.withOpacity(0.5),
-                      fontWeight: FontWeight.w400
-                    ),
-                    border: InputBorder.none
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                suffixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (suffixText == true) Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Text(
+                        hintText,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: textColor.withOpacity(0.5),
+                          fontWeight: FontWeight.w400
+                        ),
+                      ),
+                    ),
+                    iconData,
+                    const SizedBox(width: 20),
+                  ],
+                ),
+                hintText: suffixText == true ? null : hintText,
+                hintStyle: TextStyle(
+                  fontSize: 18,
+                  color: textColor.withOpacity(0.5),
+                  fontWeight: FontWeight.w400
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: textColor)
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: textColor)
+                ),
             ),
           )
         ],

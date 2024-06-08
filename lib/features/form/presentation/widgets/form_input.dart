@@ -10,6 +10,7 @@ class FormInput extends StatelessWidget {
   final TextInputType textInputType;
   final TextEditingController controller;
   final ValueChanged<String> onValueChanged;
+  final String? Function(String?)? validator;
 
   const FormInput({
     super.key,
@@ -19,7 +20,8 @@ class FormInput extends StatelessWidget {
     this.suffixText,
     required this.textInputType,
     required this.controller,
-    required this.onValueChanged
+    required this.onValueChanged,
+    this.validator,
   });
 
   @override
@@ -36,57 +38,55 @@ class FormInput extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: textColor,
+          TextFormField(
+            onChanged: onValueChanged,
+            controller: controller,
+            keyboardType: textInputType,
+            validator: validator,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (suffixText == true) Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      hintText,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: textColor.withOpacity(0.5),
+                        fontWeight: FontWeight.w400
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: textColor
+                    ),
+                    child: Icon(
+                      iconData,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                ],
               ),
-              borderRadius: BorderRadius.circular(8)
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: TextFormField(
-                onChanged: onValueChanged,
-                controller: controller,
-                keyboardType: textInputType,
-                decoration: InputDecoration(
-                  suffixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (suffixText == true) Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Text(
-                          hintText,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: textColor.withOpacity(0.5),
-                            fontWeight: FontWeight.w400
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: textColor
-                        ),
-                        child: Icon(
-                          iconData,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ],
-                  ),
-                  hintText: suffixText == true ? null : hintText,
-                  hintStyle: TextStyle(
-                    fontSize: 18,
-                    color: textColor.withOpacity(0.5),
-                    fontWeight: FontWeight.w400
-                  ),
-                  border: InputBorder.none
-                ),
+              hintText: suffixText == true ? null : hintText,
+              hintStyle: TextStyle(
+                fontSize: 18,
+                color: textColor.withOpacity(0.5),
+                fontWeight: FontWeight.w400
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: textColor)
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(color: textColor)
               ),
             ),
           )

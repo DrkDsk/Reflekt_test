@@ -57,6 +57,15 @@ class _FormBodyState extends State<FormBody> {
               onValueChanged: (value) {
                 validateForm();
               },
+              validator: (text) {
+                if (text == null) return null;
+                if (text.isEmpty) return 'Name cant be empty';
+                final validCharacters = RegExp(r'^[a-zA-Z ]+$');
+                if (!validCharacters.hasMatch(text)) {
+                  return 'Please type a name without special characters';
+                }
+                return null;
+              },
               controller: nameController,
               textInputType: TextInputType.text,
               label: 'Name',
