@@ -6,12 +6,10 @@ BoxDecoration cardBoxDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(5),
     boxShadow: [
       BoxShadow(
-        color: Colors.grey.shade300,
-        blurRadius: 1
-      ),
-      BoxShadow(
-        color: Colors.grey.shade300,
-        blurRadius: 1
+        color: Colors.grey.withOpacity(0.3),
+        spreadRadius: 1,
+        blurRadius: 6,
+        offset: const Offset(0, 3),
       ),
     ]
 );
