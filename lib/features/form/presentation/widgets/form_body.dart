@@ -17,7 +17,6 @@ class FormBody extends StatefulWidget {
 }
 
 class _FormBodyState extends State<FormBody> {
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController weightController = TextEditingController();
@@ -108,7 +107,8 @@ class _FormBodyState extends State<FormBody> {
                 )
               ],
             ),
-             DropDownGender(
+            DropDownGender(
+              selectedGender: selectedGender,
               onChanged: (value) {
                 setState(() {
                   selectedGender = value;

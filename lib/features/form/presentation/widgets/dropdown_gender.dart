@@ -5,18 +5,15 @@ import 'package:reflekt_test/core/constants/styles.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/description_text.dart';
 
 class DropDownGender extends StatelessWidget {
-
   final ValueChanged<String?> onChanged;
+  final String? selectedGender;
 
-  const DropDownGender({
-    super.key,
-    required this.onChanged
-  });
+  const DropDownGender(
+      {super.key, required this.onChanged, this.selectedGender});
 
   @override
   Widget build(BuildContext context) {
-
-    String? selectedItem;
+    String? selectedItem = selectedGender;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -25,9 +22,7 @@ class DropDownGender extends StatelessWidget {
         children: [
           const Text(
             "Gender",
-            style: TextStyle(
-                color: textColor
-            ),
+            style: TextStyle(color: textColor),
           ),
           const SizedBox(height: 12),
           Container(
@@ -37,8 +32,7 @@ class DropDownGender extends StatelessWidget {
                 border: Border.all(
                   color: textColor,
                 ),
-                borderRadius: BorderRadius.circular(8)
-            ),
+                borderRadius: BorderRadius.circular(8)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Column(
@@ -49,9 +43,7 @@ class DropDownGender extends StatelessWidget {
                       isExpanded: true,
                       value: selectedItem,
                       onChanged: onChanged,
-                      icon: Icon(
-                          MdiIcons.genderMaleFemale
-                      ),
+                      icon: Icon(MdiIcons.genderMaleFemale),
                       items: [
                         DropdownMenuItem<String>(
                           value: null,
