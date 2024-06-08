@@ -17,7 +17,7 @@ class ProfileCard extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            left: 45,
+            left: 20,
             top: 45,
             child: Row(
               children: [
@@ -25,7 +25,7 @@ class ProfileCard extends StatelessWidget {
                   "assets/images/medpass_image.png",
                   height: 50,
                 ),
-                const SizedBox(width: 15),
+                const SizedBox(width: 25),
                 SizedBox(
                   width: 200,
                   child: Text(
@@ -39,8 +39,7 @@ class ProfileCard extends StatelessWidget {
           Positioned(
               bottom: 0,
               right: 0,
-              child: Image.asset("assets/images/flowers_image.png")
-          )
+              child: Image.asset("assets/images/flowers_image.png"))
         ],
       ),
     );
