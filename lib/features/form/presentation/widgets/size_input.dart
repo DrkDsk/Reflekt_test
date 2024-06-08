@@ -5,7 +5,7 @@ class SizeInput extends StatelessWidget {
 
   final String label;
   final String hintText;
-  final IconData iconData;
+  final Widget iconData;
   final bool? suffixText;
   final TextInputType textInputType;
   final TextEditingController controller;
@@ -65,11 +65,7 @@ class SizeInput extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Icon(
-                          iconData,
-                          color: textColor,
-                          size: 30,
-                        ),
+                        iconData,
                       ],
                     ),
                     hintText: suffixText == true ? null : hintText,

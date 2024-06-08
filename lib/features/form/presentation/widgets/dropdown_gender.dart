@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:reflekt_test/core/constants/color.dart';
 import 'package:reflekt_test/core/constants/styles.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/description_text.dart';
@@ -43,7 +42,7 @@ class DropDownGender extends StatelessWidget {
                       isExpanded: true,
                       value: selectedItem,
                       onChanged: onChanged,
-                      icon: Icon(MdiIcons.genderMaleFemale),
+                      icon: const ImageIcon(AssetImage("assets/images/gender.png"), color: textColor, size: 30,),
                       items: [
                         DropdownMenuItem<String>(
                           value: null,

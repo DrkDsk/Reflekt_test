@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:reflekt_test/core/constants/color.dart';
 import 'package:reflekt_test/core/constants/styles.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/description_text.dart';
@@ -74,7 +73,7 @@ class _FormBodyState extends State<FormBody> {
               suffixText: true,
               label: 'Weight',
               hintText: 'lbs',
-              iconData: Icons.scale,
+              iconData: const ImageIcon(AssetImage("assets/images/weightmeter.png"), color: textColor, size: 30),
             ),
             Row(
               children: [
@@ -88,7 +87,7 @@ class _FormBodyState extends State<FormBody> {
                       suffixText: true,
                       label: 'Height',
                       hintText: 'Feet',
-                      iconData: MdiIcons.ruler,
+                      iconData: const ImageIcon(AssetImage("assets/images/ruler.png"), color: textColor, size: 30,),
                     )
                 ),
                 const SizedBox(width: 15),
@@ -102,7 +101,7 @@ class _FormBodyState extends State<FormBody> {
                       suffixText: true,
                       label: '',
                       hintText: 'Inches',
-                      iconData: MdiIcons.ruler,
+                      iconData: const ImageIcon(AssetImage("assets/images/ruler.png"), color: textColor, size: 30,),
                     )
                 )
               ],
