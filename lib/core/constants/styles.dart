@@ -49,3 +49,9 @@ TextStyle suggestionTitleStyle = const TextStyle(
     fontSize: 20,
     color: textColor
 );
+
+TextStyle personalInformationTextStyle = const TextStyle(
+    fontSize: 20,
+    color: textColor,
+    fontWeight: FontWeight.w600
+);

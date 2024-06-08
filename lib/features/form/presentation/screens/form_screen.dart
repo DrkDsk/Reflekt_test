@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reflekt_test/features/form/presentation/widgets/form_body.dart';
 import 'package:reflekt_test/features/home/presentation/widgets/back_button_app_bar.dart';
 import 'package:reflekt_test/features/form/presentation/widgets/profile_card.dart';
 
@@ -26,6 +27,7 @@ class FormScreen extends StatelessWidget {
               children: [
                 ProfileCard(),
                 SizedBox(height: 20),
+                FormBody()
               ],
             ),
           ),
