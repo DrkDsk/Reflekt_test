@@ -55,3 +55,8 @@ TextStyle personalInformationTextStyle = const TextStyle(
     color: textColor,
     fontWeight: FontWeight.w600
 );
+
+TextStyle genderLabelTextStyle = const TextStyle(
+    fontSize: 15,
+    color: textColor
+);

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:reflekt_test/core/constants/styles.dart';
 import 'package:reflekt_test/features/chat/presentation/widgets/description_text.dart';
 import 'package:reflekt_test/features/form/presentation/widgets/date_picker.dart';
+import 'package:reflekt_test/features/form/presentation/widgets/dropdown_gender.dart';
 import 'package:reflekt_test/features/form/presentation/widgets/form_input.dart';
 import 'package:reflekt_test/features/form/presentation/widgets/size_input.dart';
 
@@ -69,6 +71,38 @@ class _FormBodyState extends State<FormBody> {
               hintText: 'lbs',
               iconData: Icons.scale,
             ),
+            Row(
+              children: [
+                Expanded(
+                    child: SizeInput(
+                      controller: heightController,
+                      onValueChanged: (value) {
+                        validateForm();
+                      },
+                      textInputType: TextInputType.number,
+                      suffixText: true,
+                      label: 'Height',
+                      hintText: 'Feet',
+                      iconData: MdiIcons.ruler,
+                    )
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                    child: SizeInput(
+                      controller: inchesController,
+                      onValueChanged: (value) {
+                        validateForm();
+                      },
+                      textInputType: TextInputType.number,
+                      suffixText: true,
+                      label: '',
+                      hintText: 'Inches',
+                      iconData: MdiIcons.ruler,
+                    )
+                )
+              ],
+            ),
+            const DropDownGender(),
           ],
         ),
       ),
