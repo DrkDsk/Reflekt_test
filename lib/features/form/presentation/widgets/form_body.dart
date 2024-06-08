@@ -24,13 +24,17 @@ class _FormBodyState extends State<FormBody> {
   TextEditingController heightController = TextEditingController();
   TextEditingController inchesController = TextEditingController();
   bool formValid = false;
+  String? selectedGender;
 
   void validateForm() {
     setState(() {
-      formValid = nameController.text.isNotEmpty;
-      formValid = weightController.text.isNotEmpty;
-      formValid = heightController.text.isNotEmpty;
-      formValid = inchesController.text.isNotEmpty;
+      print(selectedGender);
+      formValid = nameController.text.isNotEmpty &&
+          weightController.text.isNotEmpty &&
+          heightController.text.isNotEmpty &&
+          inchesController.text.isNotEmpty &&
+          selectedGender != null &&
+          selectedGender != 'Select Option';
     });
   }
 
@@ -104,7 +108,14 @@ class _FormBodyState extends State<FormBody> {
                 )
               ],
             ),
-            const DropDownGender(),
+             DropDownGender(
+              onChanged: (value) {
+                setState(() {
+                  selectedGender = value;
+                  validateForm();
+                });
+              },
+            ),
             const SizedBox(height: 20),
             DescriptionText(
                 title: "Information is being collected for medical records.",
