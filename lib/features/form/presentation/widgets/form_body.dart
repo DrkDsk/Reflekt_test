@@ -28,6 +28,7 @@ class _FormBodyState extends State<FormBody> {
     setState(() {
       print(selectedGender);
       formValid = nameController.text.isNotEmpty &&
+          RegExp(r'^[a-zA-Z ]+$').hasMatch(nameController.text) &&
           weightController.text.isNotEmpty &&
           heightController.text.isNotEmpty &&
           inchesController.text.isNotEmpty &&
@@ -78,6 +79,7 @@ class _FormBodyState extends State<FormBody> {
               onValueChanged: (value) {
                 validateForm();
               },
+              maxNumbers: 3,
               textInputType: TextInputType.number,
               suffixText: true,
               label: 'Weight',
@@ -92,6 +94,7 @@ class _FormBodyState extends State<FormBody> {
                       onValueChanged: (value) {
                         validateForm();
                       },
+                      maxNumbers: 1,
                       textInputType: TextInputType.number,
                       suffixText: true,
                       label: 'Height',
@@ -106,6 +109,7 @@ class _FormBodyState extends State<FormBody> {
                       onValueChanged: (value) {
                         validateForm();
                       },
+                      maxNumbers: 2,
                       textInputType: TextInputType.number,
                       suffixText: true,
                       label: '',
