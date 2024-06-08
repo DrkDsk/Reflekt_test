@@ -31,7 +31,7 @@ class _DatePickerState extends State<DatePicker> {
           String? day = selectedDate?.day.toString().padLeft(2, '0');
           String? month = selectedDate?.month.toString().padLeft(2, '0');
           String? year = selectedDate?.year.toString();
-          dateFormatted = '$day/$month/$year';
+          dateFormatted = '$month/$day/$year';
         });
       }
     }
@@ -63,7 +63,6 @@ class _DatePickerState extends State<DatePicker> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                         dateFormatted.isNotEmpty ? dateFormatted : "mm/dd/yyyy",
@@ -73,11 +72,13 @@ class _DatePickerState extends State<DatePicker> {
                             fontWeight: FontWeight.w400
                         )
                     ),
+                    const Spacer(),
                     const Icon(
                       Icons.calendar_month,
                       color: textColor,
                       size: 30,
-                    )
+                    ),
+                    const SizedBox(width: 10),
                   ],
                 ),
               ),
